@@ -33,7 +33,7 @@ public class LoginController {
         switch (type) {
             case "reader":
                 Reader reader = readerService.getReader(password, username);
-                //System.out.println(reader + "\n\n\n\n\n\n\n");
+                System.out.println(reader + "\n\n\n\n\n\n\n");
                 if (reader != null) {
                     request.getSession().setAttribute("reader", reader);
                     return "redirect:/reader/allBookReader";
