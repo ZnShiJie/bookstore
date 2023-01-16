@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.southwind.repository.BookRepository">
+
+<!--   List<Book> queryAllBooks(); -->
+    <select id="queryAllBooks" resultMap="bookCase">
+        select * from book;
+    </select>
+
+    <resultMap id="bookCase" type="book">
+        <association property="bookcase" column="bid" javaType="Bookcase" select="getBookcase"/>
+    </resultMap>
+
+    <select id="getBookcase" resultType="bookcase">
+        select * from bookcase where id = #{bid};
+    </select>
+
+    <insert id="addBook" parameterType="book">
+        insert into
+            book (bookName, bookCounts, detail, price, publisher, author, bid)
+        values
+               (#{bookName},#{bookCounts},#{detail}, #{price}, #{publisher}, #{author}, #{bookcase.id})
+    </insert>
+
+
+    <delete id="deleteBookById" parameterType="int">
+        delete from book where bookID = #{id}
+    </delete>
+
+    <select id="QueryBookById" parameterType="int" resultMap="bookCase">
+        select * from book where bookID = #{id}
+    </select>
+
+
+    <select id="queryBookByName" resultMap="bookCase">
+        select * from book where bookName like concat('%',#{bookName},'%')
+    </select>
+
+</mapper>
