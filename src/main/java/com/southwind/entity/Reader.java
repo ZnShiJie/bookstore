@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reader {
-    private Integer id;
+    private Integer id; //tetst
     private String username;
     private String password;
 //    private List<Borrow> borrows;
