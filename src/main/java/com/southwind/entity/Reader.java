@@ -12,6 +12,6 @@ import java.util.List;
 public class Reader {
     private Integer id; //tetst
     private String username;
-    private String password;
+    private String password; //password
 //    private List<Borrow> borrows;
 }
